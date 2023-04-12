@@ -22,12 +22,19 @@
           <td>{{ $project->getAbstract() }}</td>
           <td>{{ $project->thumbnail }}</td>
           <td>
-            <a href="{{ route('admin.projects.show', $project) }}">
+            <a href="{{ route('admin.projects.show', $project) }}" class="btn p-0">
               <i class="bi bi-box-arrow-in-up-right"></i>
             </a>
-            <a href="{{ route('admin.projects.edit', $project) }}">
+            <a href="{{ route('admin.projects.edit', $project) }}" class="btn p-0">
               <i class="bi bi-pencil-square"></i>
             </a>
+            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn p-0">
+                <i class="bi bi-trash text-danger"></i>
+              </button>
+            </form>
           </td>
         </tr>
       @endforeach
