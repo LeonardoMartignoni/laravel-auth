@@ -12,4 +12,10 @@ class Project extends Model
     public function getAbstract($max = 50) {
         return substr($this->description, 0, $max) . '...';
     }
+
+    protected $fillable = [
+        'title',
+        'thumbnail',
+        'description',
+    ];
 }

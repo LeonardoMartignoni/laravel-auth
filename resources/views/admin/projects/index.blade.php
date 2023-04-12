@@ -2,7 +2,8 @@
 
 @section('page-title', 'Projects')
 @section('content')
-  @dump($projects)
+  {{-- @dump($projects) --}}
+  <a href="{{ route('admin.projects.create') }}" class="btn btn-primary">Create Project</a>
   <table class="table table-striped">
     <thead>
       <tr>
