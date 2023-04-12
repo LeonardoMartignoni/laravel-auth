@@ -28,16 +28,44 @@
             <a href="{{ route('admin.projects.edit', $project) }}" class="btn p-0">
               <i class="bi bi-pencil-square"></i>
             </a>
-            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
-              @csrf
-              @method('DELETE')
-              <button type="submit" class="btn p-0">
-                <i class="bi bi-trash text-danger"></i>
-              </button>
-            </form>
+            <button type="button" class="btn p-0" data-bs-toggle="modal"
+              data-bs-target="#exampleModal-{{ $project->id }}">
+              <i class="bi bi-trash text-danger"></i>
+            </button>
           </td>
         </tr>
       @endforeach
     </tbody>
   </table>
+@endsection
+
+@section('modals')
+  @foreach ($projects as $project)
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal-{{ $project->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Remove {{ $project->title }}</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Are you sure you want to delete this element?<br>
+            This action is irreversible!
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, go back</button>
+            <form action="{{ route('admin.projects.destroy', $project) }}" method="POST">
+              @csrf
+              @method('DELETE')
+              <button type="submit" class="btn btn-danger">
+                Yes, delete
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  @endforeach
 @endsection
