@@ -25,6 +25,9 @@
             <a href="{{ route('admin.projects.show', $project) }}">
               <i class="bi bi-box-arrow-in-up-right"></i>
             </a>
+            <a href="{{ route('admin.projects.edit', $project) }}">
+              <i class="bi bi-pencil-square"></i>
+            </a>
           </td>
         </tr>
       @endforeach
