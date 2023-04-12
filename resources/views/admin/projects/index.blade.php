@@ -21,8 +21,9 @@
           <td>{{ $project->getAbstract() }}</td>
           <td>{{ $project->thumbnail }}</td>
           <td>
-            <a href=""></a>
-            <i class="bi bi-box-arrow-in-up-right"></i>
+            <a href="{{ route('admin.projects.show', $project) }}">
+              <i class="bi bi-box-arrow-in-up-right"></i>
+            </a>
           </td>
         </tr>
       @endforeach
