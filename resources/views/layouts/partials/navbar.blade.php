@@ -19,11 +19,16 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
-        </li>
-      </ul>
+      @auth
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('home') }}">{{ __('Home') }}</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.projects.index') }}">{{ __('Projects') }}</a>
+          </li>
+        </ul>
+      @endauth
 
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
@@ -45,7 +50,7 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
+              <a class="dropdown-item" href="{{ route('home') }}">{{ __('Dashboard') }}</a>
               <a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
               <a class="dropdown-item" href="{{ route('logout') }}"
                 onclick="event.preventDefault();

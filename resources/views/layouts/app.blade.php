@@ -10,6 +10,8 @@
 
   <title>{{ config('app.name', 'Laravel') }} - Back Office</title>
 
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
 
   <!-- Fonts -->
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,7 +25,11 @@
   <div id="app">
     @include('layouts.partials.navbar')
 
-    <main class="">
+    <main class="container">
+      <h1 class="my-3">
+        @yield('page-title')
+      </h1>
+
       @yield('content')
     </main>
   </div>
