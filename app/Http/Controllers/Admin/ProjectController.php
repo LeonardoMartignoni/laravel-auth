@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 use Illuminate\Http\Request;
 
 class ProjectController extends Controller
@@ -38,9 +40,11 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
+        $data = $request->all();
         $project = new Project;
-        $project->fill($request->all());
+        $project->fill($data);
         $project->slug = Str::of($project->title)->slug('-');
+        $project->thumbnail = Storage::put('uploads', $data['thumbnail']);
         $project->save();
         return to_route('admin.projects.show', $project);
     }
