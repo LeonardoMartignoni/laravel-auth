@@ -18,4 +18,12 @@ class Project extends Model
         'thumbnail',
         'description',
     ];
+
+    public function getImageThumb() {
+        if (strpos($this->thumbnail, 'http') === 0) {
+            return $this->thumbnail;
+        } else {
+            return asset('storage/' . $this->thumbnail);
+        }
+    }
 }
