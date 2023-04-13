@@ -3,7 +3,7 @@
 @section('page-title', 'Edit ' . $project->title)
 
 @section('content')
-  <form action="{{ route('admin.projects.update', $project) }}" method="post">
+  <form action="{{ route('admin.projects.update', $project) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PUT')
     <div class="mb-3">
@@ -12,7 +12,7 @@
     </div>
     <div class="mb-3">
       <label for="thumbnail" class="form-label">Thumbnail</label>
-      <input type="text" class="form-control" id="thumbnail" name="thumbnail" value="{{ $project->thumbnail }}">
+      <input type="file" class="form-control" id="thumbnail" name="thumbnail">
     </div>
     <div class="mb-3">
       <label for="description" class="form-label">Description</label>

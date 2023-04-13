@@ -80,8 +80,9 @@ class ProjectController extends Controller
      */
     public function update(Request $request, Project $project)
     {
-        $project_changes = $request->all();
-        $project->fill($project_changes);
+        $data = $request->all();
+        $project->fill($data);
+        $project->thumbnail = Storage::put('uploads', $data['thumbnail']);
         $project->save();
         return to_route('admin.projects.index');
     }
